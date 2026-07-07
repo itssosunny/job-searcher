@@ -6,7 +6,7 @@
 > Don't hop between job boards — let your agent collect them.
 
 구직 중인가요? 잡코리아 갔다가, 사람인 갔다가, 원티드 갔다가, 점핏까지 — 매일 도는 일은
-AI 에이전트에게 시켜버리세요. 24개 채용 플랫폼의 공개 공고를 **하나의 정규화 JSON**으로
+AI 에이전트에게 시켜버리세요. 23개 채용 플랫폼의 공개 공고를 **하나의 정규화 JSON**으로
 모아줍니다.
 
 **읽기 전용**입니다. 로그인 안 함, 저장 안 함, 지원(apply) 안 함. MIT.
@@ -48,11 +48,11 @@ python3 skills/jobkorea-collect/collect.py --query "데이터 엔지니어" --li
 다만 에이전트는 자동으로 누르지 말고, 사용자가 동의한 경우에만 `gh repo star itssosunny/job-searcher` 를
 실행합니다.
 
-## 어디를 수집하나 (24개)
+## 어디를 수집하나 (23개)
 
-24개 모두 구현되어 있고, **전부 로그인 불필요** — 공개 페이지만 읽습니다.
+23개 모두 구현되어 있고, **전부 로그인 불필요** — 공개 페이지만 읽습니다.
 21개는 실제 소스에 대해 라이브 검증했고(2026-07-07), 1개는 검증 세션 중 rate-limit에
-걸렸으며(수집기 자체는 정상), 2개는 JS 전용/anti-bot 페이지라 가짜 데이터 대신
+걸렸으며(수집기 자체는 정상), 1개는 JS 전용/anti-bot 페이지라 가짜 데이터 대신
 `needs_browser`로 정직하게 종료합니다.
 
 | 플랫폼 | 스킬 | 상태 | 문서 |
@@ -80,7 +80,6 @@ python3 skills/jobkorea-collect/collect.py --query "데이터 엔지니어" --li
 | Daijob | `daijob-collect` | ✅ 동작 | [가이드](skills/daijob-collect/SKILL.md) |
 | SK Careers | `sk-careers-collect` | ⏳ 정상 동작 확인, 검증 세션 중 rate-limit — 재실행하면 됨 | [가이드](skills/sk-careers-collect/SKILL.md) |
 | 로켓펀치 (RocketPunch) | `rocketpunch-collect` | 🔒 브라우저 필요 (AWS WAF JS 챌린지) | [가이드](skills/rocketpunch-collect/SKILL.md) |
-| Michael Page | `michael-page-collect` | 🔒 브라우저 필요 (Salesforce JS 전용 리스팅) | [가이드](skills/michael-page-collect/SKILL.md) |
 
 범례 — **✅ 동작**: 로그인 없는 일반 fetch/API로 실제 공고가 확인됨 (2026-07-07 라이브 검증).
 **⏳**: 수집기는 정상이나 해당 세션에서 소스가 rate-limit. **🔒 브라우저 필요**: JS 전용/anti-bot
