@@ -1,0 +1,11 @@
+{
+  "name": "job-seeker",
+  "owner": { "name": "matt" },
+  "plugins": [
+    {
+      "name": "job-seeker",
+      "source": "./",
+      "description": "One self-contained skill per job platform. Each skill collects recent public postings from its source (read-only, no login/apply) and prints normalized JSON."
+    }
+  ]
+}

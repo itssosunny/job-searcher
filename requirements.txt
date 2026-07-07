@@ -1,0 +1,6 @@
+# Each collect.py is self-contained but shares these runtime deps.
+# curl_cffi impersonates a real browser TLS fingerprint so public listing pages
+# that reject plain urllib/requests still return content (no login, read-only).
+curl_cffi>=0.15.0
+beautifulsoup4>=4.12
+lxml>=5.0

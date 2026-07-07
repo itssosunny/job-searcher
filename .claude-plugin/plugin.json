@@ -1,0 +1,8 @@
+{
+  "name": "job-seeker",
+  "version": "0.1.0",
+  "description": "Collect public job postings from job platforms — one self-contained skill per source. Read-only: no login, no save, no apply.",
+  "author": { "name": "matt" },
+  "license": "MIT",
+  "keywords": ["jobs", "job-search", "recruiting", "scraping", "korea", "remote"]
+}
