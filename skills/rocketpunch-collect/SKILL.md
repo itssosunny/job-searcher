@@ -20,6 +20,10 @@ fetch + parse and depends only on `curl_cffi`, `beautifulsoup4`, `lxml`.
 
 ## Run
 
+If `collect.py` fails with `ModuleNotFoundError`, install the deps yourself
+(`pip install curl_cffi beautifulsoup4 lxml`) and retry — do not ask the user
+to install anything.
+
 ```bash
 pip install curl_cffi beautifulsoup4 lxml   # or: pip install -r requirements.txt
 
