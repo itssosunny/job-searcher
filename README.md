@@ -38,39 +38,45 @@ python3 skills/jobkorea-collect/collect.py --query "데이터 엔지니어" --li
 ## Sources (24 fetch-collectible platforms)
 
 Derived from a 2026-07-07 collectibility scan of a 53-source registry: these 24
-returned a concrete public posting via automated no-login fetch/search. `✅` =
-reference collector implemented + live-verified; the rest are planned with the
-same standalone pattern.
+returned a concrete public posting via automated no-login fetch/search. All 24
+collectors are implemented — 21 are live-verified against the real source, 1 is
+correct but was rate-limited during the build session, and 2 have JS-only /
+anti-bot listings and honestly report `needs_browser`.
 
 | Skill | Platform | Status |
 | --- | --- | --- |
-| `jobkorea-collect` | JobKorea (잡코리아) | ✅ |
-| `saramin-collect` | Saramin (사람인) | ✅ |
-| `weworkremotely-collect` | We Work Remotely | ✅ |
-| `wanted-collect` | Wanted (원티드) | planned |
-| `jumpit-collect` | Jumpit (점핏) | planned |
-| `rallit-collect` | Rallit (랠릿) | planned |
-| `rocketpunch-collect` | RocketPunch (로켓펀치) | planned |
-| `incruit-collect` | Incruit (인크루트) | planned |
-| `career-kr-collect` | Career.co.kr | planned |
-| `dev-korea-collect` | Dev Korea | planned |
-| `kowork-collect` | KOWORK | planned |
-| `devrunner-collect` | DevRunner | planned |
-| `sk-careers-collect` | SK Careers | planned |
-| `lotte-recruit-collect` | Lotte Recruit | planned |
-| `naver-recruit-collect` | NAVER Careers | planned |
-| `cj-recruit-collect` | CJ Careers | planned |
-| `coupang-collect` | Coupang | planned |
-| `toss-career-collect` | Toss Career | planned |
-| `apple-jobs-collect` | Apple Jobs (Korea) | planned |
-| `sap-jobs-collect` | SAP Jobs (Seoul) | planned |
-| `worldjobplus-collect` | WorldJobPlus (해외취업) | planned |
-| `michael-page-collect` | Michael Page | planned |
-| `japandev-collect` | Japan Dev | planned |
-| `daijob-collect` | Daijob | planned |
+| `jobkorea-collect` | JobKorea (잡코리아) | ✅ works |
+| `saramin-collect` | Saramin (사람인) | ✅ works |
+| `weworkremotely-collect` | We Work Remotely | ✅ works (RSS) |
+| `wanted-collect` | Wanted (원티드) | ✅ works (JSON API) |
+| `jumpit-collect` | Jumpit (점핏) | ✅ works (XML API) |
+| `rallit-collect` | Rallit (랠릿) | ✅ works (JSON API) |
+| `incruit-collect` | Incruit (인크루트) | ✅ works (CP949) |
+| `career-kr-collect` | Career.co.kr | ✅ works |
+| `dev-korea-collect` | Dev Korea | ✅ works |
+| `kowork-collect` | KOWORK | ✅ works (first page) |
+| `devrunner-collect` | DevRunner | ✅ works (RSC stream) |
+| `cj-recruit-collect` | CJ Careers | ✅ works (featured; full search needs browser) |
+| `coupang-collect` | Coupang | ✅ works (Greenhouse API) |
+| `toss-career-collect` | Toss Career | ✅ works (public API) |
+| `naver-recruit-collect` | NAVER Careers | ✅ works (JSON API) |
+| `lotte-recruit-collect` | Lotte Recruit | ✅ works |
+| `apple-jobs-collect` | Apple Jobs (Korea) | ✅ works (SSR JSON) |
+| `sap-jobs-collect` | SAP Jobs (Seoul) | ✅ works |
+| `worldjobplus-collect` | WorldJobPlus (해외취업) | ✅ works |
+| `japandev-collect` | Japan Dev | ✅ works |
+| `daijob-collect` | Daijob | ✅ works |
+| `sk-careers-collect` | SK Careers | ⏳ works, rate-limited during build (JSON endpoint returned 83 postings; IP-throttled after heavy probing — re-run later) |
+| `rocketpunch-collect` | RocketPunch (로켓펀치) | 🔒 needs browser (AWS WAF JS challenge) |
+| `michael-page-collect` | Michael Page | 🔒 needs browser (Salesforce JS-only listing) |
 
-Sources needing a real browser (JS-only / anti-bot 403) are intentionally out of
-scope for v1's plain-fetch collectors.
+Legend: **✅ works** — a plain no-login fetch/API returns concrete postings
+(live-verified 2026-07-07). **⏳** — collector is correct but the source
+rate-limited this build session. **🔒 needs browser** — the listing is
+JS-only/anti-bot; the skill detects the gate and exits honestly (exit 1 +
+`needs_browser`) rather than fabricating. A `needs_browser` skill still ships:
+it carries the correct parser and auto-upgrades if the source serves postings
+server-side.
 
 ## License
 
