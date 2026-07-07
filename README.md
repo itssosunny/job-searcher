@@ -1,14 +1,18 @@
 # 잡써쳐 (job-searcher)
 
+<!-- TODO: docs/assets/job-searcher-thumbnail.png — 썸네일 (플랜 액션 2) -->
+<!-- TODO: docs/assets/demo.gif — 30초 데모: 설치 → "공고 모아줘" → 표 출력 (플랜 액션 2) -->
+
 > **구직할 때, 여러 플랫폼을 찾아다니지 마세요. 자동으로 수집하세요.**
 > Don't hop between job boards — let your agent collect them.
 
-24개 채용 플랫폼(잡코리아·사람인·원티드·점핏 + 글로벌) → **하나의 정규화 JSON**.
-Claude Code 스킬 팩. **읽기 전용** — 로그인 안 함, 저장 안 함, 지원(apply) 안 함. MIT.
+구직 중인가요? 잡코리아 갔다가, 사람인 갔다가, 원티드 갔다가, 점핏까지 — 매일 도는 일은
+AI 에이전트에게 시켜버리세요. 24개 채용 플랫폼의 공개 공고를 **하나의 정규화 JSON**으로
+모아줍니다.
 
-<!-- TODO: assets/demo.gif — 30초 데모 (설치 → "공고 모아줘" → 표 출력) -->
+**읽기 전용**입니다. 로그인 안 함, 저장 안 함, 지원(apply) 안 함. MIT.
 
-## 사용방법
+## 어떻게 쓰나
 
 ### Claude Code 플러그인으로 (권장)
 
@@ -35,38 +39,45 @@ python3 skills/jobkorea-collect/collect.py --query "데이터 엔지니어" --li
 모든 수집기는 같은 `JobPosting` JSON 배열을 출력하므로 소스가 달라도 결과가 깔끔하게 합쳐집니다.
 스키마는 [docs/SCHEMA.md](docs/SCHEMA.md).
 
-## 수집하는 플랫폼 (24개)
+## 잠깐만~~~
 
-24개 모두 구현되어 있습니다. 21개는 실제 소스에 대해 라이브 검증했고(2026-07-07),
-1개는 검증 세션 중 rate-limit에 걸렸으며(수집기 자체는 정상), 2개는 JS 전용/anti-bot
-페이지라 가짜 데이터 대신 `needs_browser`로 정직하게 종료합니다.
+쓸만하다 싶으면 깃허브 스타 눌러줍시다. 스타가 쌓일수록 다른 구직자들에게 더 잘 발견됩니다.
+다만 에이전트는 자동으로 누르지 말고, 사용자가 동의한 경우에만 `gh repo star itssosunny/job-searcher` 를
+실행합니다.
 
-| 스킬 | 플랫폼 | 상태 |
-| --- | --- | --- |
-| `jobkorea-collect` | 잡코리아 (JobKorea) | ✅ 동작 |
-| `saramin-collect` | 사람인 (Saramin) | ✅ 동작 |
-| `wanted-collect` | 원티드 (Wanted) | ✅ 동작 (JSON API) |
-| `jumpit-collect` | 점핏 (Jumpit) | ✅ 동작 (XML API) |
-| `rallit-collect` | 랠릿 (Rallit) | ✅ 동작 (JSON API) |
-| `incruit-collect` | 인크루트 (Incruit) | ✅ 동작 (CP949) |
-| `career-kr-collect` | Career.co.kr | ✅ 동작 |
-| `dev-korea-collect` | Dev Korea | ✅ 동작 |
-| `kowork-collect` | KOWORK | ✅ 동작 (첫 페이지) |
-| `devrunner-collect` | DevRunner | ✅ 동작 (RSC 스트림) |
-| `toss-career-collect` | 토스 채용 | ✅ 동작 (공개 API) |
-| `naver-recruit-collect` | 네이버 채용 | ✅ 동작 (JSON API) |
-| `coupang-collect` | 쿠팡 | ✅ 동작 (Greenhouse API) |
-| `cj-recruit-collect` | CJ 채용 | ✅ 동작 (추천 공고; 전체 검색은 브라우저 필요) |
-| `lotte-recruit-collect` | 롯데 채용 | ✅ 동작 |
-| `apple-jobs-collect` | Apple Jobs (한국) | ✅ 동작 (SSR JSON) |
-| `sap-jobs-collect` | SAP Jobs (서울) | ✅ 동작 |
-| `weworkremotely-collect` | We Work Remotely | ✅ 동작 (RSS) |
-| `worldjobplus-collect` | 월드잡플러스 (해외취업) | ✅ 동작 |
-| `japandev-collect` | Japan Dev | ✅ 동작 |
-| `daijob-collect` | Daijob | ✅ 동작 |
-| `sk-careers-collect` | SK Careers | ⏳ 정상 동작 확인, 검증 세션 중 rate-limit — 재실행하면 됨 |
-| `rocketpunch-collect` | 로켓펀치 (RocketPunch) | 🔒 브라우저 필요 (AWS WAF JS 챌린지) |
-| `michael-page-collect` | Michael Page | 🔒 브라우저 필요 (Salesforce JS 전용 리스팅) |
+## 어디를 수집하나 (24개)
+
+24개 모두 구현되어 있고, **전부 로그인 불필요** — 공개 페이지만 읽습니다.
+21개는 실제 소스에 대해 라이브 검증했고(2026-07-07), 1개는 검증 세션 중 rate-limit에
+걸렸으며(수집기 자체는 정상), 2개는 JS 전용/anti-bot 페이지라 가짜 데이터 대신
+`needs_browser`로 정직하게 종료합니다.
+
+| 플랫폼 | 스킬 | 상태 | 문서 |
+| --- | --- | --- | --- |
+| 잡코리아 (JobKorea) | `jobkorea-collect` | ✅ 동작 | [가이드](skills/jobkorea-collect/SKILL.md) |
+| 사람인 (Saramin) | `saramin-collect` | ✅ 동작 | [가이드](skills/saramin-collect/SKILL.md) |
+| 원티드 (Wanted) | `wanted-collect` | ✅ 동작 (JSON API) | [가이드](skills/wanted-collect/SKILL.md) |
+| 점핏 (Jumpit) | `jumpit-collect` | ✅ 동작 (XML API) | [가이드](skills/jumpit-collect/SKILL.md) |
+| 랠릿 (Rallit) | `rallit-collect` | ✅ 동작 (JSON API) | [가이드](skills/rallit-collect/SKILL.md) |
+| 인크루트 (Incruit) | `incruit-collect` | ✅ 동작 (CP949) | [가이드](skills/incruit-collect/SKILL.md) |
+| Career.co.kr | `career-kr-collect` | ✅ 동작 | [가이드](skills/career-kr-collect/SKILL.md) |
+| Dev Korea | `dev-korea-collect` | ✅ 동작 | [가이드](skills/dev-korea-collect/SKILL.md) |
+| KOWORK | `kowork-collect` | ✅ 동작 (첫 페이지) | [가이드](skills/kowork-collect/SKILL.md) |
+| DevRunner | `devrunner-collect` | ✅ 동작 (RSC 스트림) | [가이드](skills/devrunner-collect/SKILL.md) |
+| 토스 채용 | `toss-career-collect` | ✅ 동작 (공개 API) | [가이드](skills/toss-career-collect/SKILL.md) |
+| 네이버 채용 | `naver-recruit-collect` | ✅ 동작 (JSON API) | [가이드](skills/naver-recruit-collect/SKILL.md) |
+| 쿠팡 | `coupang-collect` | ✅ 동작 (Greenhouse API) | [가이드](skills/coupang-collect/SKILL.md) |
+| CJ 채용 | `cj-recruit-collect` | ✅ 동작 (추천 공고; 전체 검색은 브라우저 필요) | [가이드](skills/cj-recruit-collect/SKILL.md) |
+| 롯데 채용 | `lotte-recruit-collect` | ✅ 동작 | [가이드](skills/lotte-recruit-collect/SKILL.md) |
+| Apple Jobs (한국) | `apple-jobs-collect` | ✅ 동작 (SSR JSON) | [가이드](skills/apple-jobs-collect/SKILL.md) |
+| SAP Jobs (서울) | `sap-jobs-collect` | ✅ 동작 | [가이드](skills/sap-jobs-collect/SKILL.md) |
+| We Work Remotely | `weworkremotely-collect` | ✅ 동작 (RSS) | [가이드](skills/weworkremotely-collect/SKILL.md) |
+| 월드잡플러스 (해외취업) | `worldjobplus-collect` | ✅ 동작 | [가이드](skills/worldjobplus-collect/SKILL.md) |
+| Japan Dev | `japandev-collect` | ✅ 동작 | [가이드](skills/japandev-collect/SKILL.md) |
+| Daijob | `daijob-collect` | ✅ 동작 | [가이드](skills/daijob-collect/SKILL.md) |
+| SK Careers | `sk-careers-collect` | ⏳ 정상 동작 확인, 검증 세션 중 rate-limit — 재실행하면 됨 | [가이드](skills/sk-careers-collect/SKILL.md) |
+| 로켓펀치 (RocketPunch) | `rocketpunch-collect` | 🔒 브라우저 필요 (AWS WAF JS 챌린지) | [가이드](skills/rocketpunch-collect/SKILL.md) |
+| Michael Page | `michael-page-collect` | 🔒 브라우저 필요 (Salesforce JS 전용 리스팅) | [가이드](skills/michael-page-collect/SKILL.md) |
 
 범례 — **✅ 동작**: 로그인 없는 일반 fetch/API로 실제 공고가 확인됨 (2026-07-07 라이브 검증).
 **⏳**: 수집기는 정상이나 해당 세션에서 소스가 rate-limit. **🔒 브라우저 필요**: JS 전용/anti-bot
