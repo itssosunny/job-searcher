@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: CJ Careers collector — self-contained, read-only.
+"""job-searcher :: CJ Careers collector — self-contained, read-only.
 
 Collects current public postings from CJ's recruit portal and prints a
 normalized JSON array (see docs/SCHEMA.md). CJ's root is a frameset; the

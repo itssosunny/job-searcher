@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Career.co.kr collector — self-contained, read-only.
+"""job-searcher :: Career.co.kr collector — self-contained, read-only.
 
 Collects recent public postings from Career.co.kr's public jobs listing and
 prints a normalized JSON array (see docs/SCHEMA.md). No login, no save, no apply

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: KOWORK collector — self-contained, read-only.
+"""job-searcher :: KOWORK collector — self-contained, read-only.
 
 Collects recent public postings from KOWORK's (kowork.kr) English jobs-for-
 foreigners listing and prints a normalized JSON array (see docs/SCHEMA.md). No

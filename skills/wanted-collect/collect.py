@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Wanted collector — self-contained, read-only.
+"""job-searcher :: Wanted collector — self-contained, read-only.
 
 Collects recent public postings from Wanted's (원티드) public jobs JSON API and
 prints a normalized JSON array (see docs/SCHEMA.md). The API is the site's own

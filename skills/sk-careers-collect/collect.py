@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: SK Careers collector — self-contained, read-only.
+"""job-searcher :: SK Careers collector — self-contained, read-only.
 
 Collects current public postings from SK Careers (skcareers.com) and prints a
 normalized JSON array (see docs/SCHEMA.md). The public recruit page (`/Recruit`)

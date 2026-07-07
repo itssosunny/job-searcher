@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Japan Dev collector — self-contained, read-only.
+"""job-searcher :: Japan Dev collector — self-contained, read-only.
 
 Collects recent public postings from Japan Dev's (japan-dev.com) job listing —
 IT jobs in Japan for English speakers — and prints a normalized JSON array (see

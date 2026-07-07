@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Incruit collector — self-contained, read-only.
+"""job-searcher :: Incruit collector — self-contained, read-only.
 
 Collects recent public postings from Incruit's (인크루트) keyword search and
 prints a normalized JSON array (see docs/SCHEMA.md). No login, no save, no apply

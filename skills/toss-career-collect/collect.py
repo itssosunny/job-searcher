@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Toss Career collector — self-contained, read-only.
+"""job-searcher :: Toss Career collector — self-contained, read-only.
 
 Collects current public postings from Toss's careers board and prints a
 normalized JSON array (see docs/SCHEMA.md). The toss.im/career page renders its

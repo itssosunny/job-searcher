@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Lotte Recruit collector — self-contained, read-only.
+"""job-searcher :: Lotte Recruit collector — self-contained, read-only.
 
 Collects current public postings from Lotte Recruit (recruit.lotte.co.kr) and
 prints a normalized JSON array (see docs/SCHEMA.md). The public announcement

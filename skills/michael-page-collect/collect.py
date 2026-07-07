@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Michael Page collector — self-contained, read-only.
+"""job-searcher :: Michael Page collector — self-contained, read-only.
 
 Attempts to collect public postings from Michael Page's (michaelpage.com) job
 search and print a normalized JSON array (see docs/SCHEMA.md). This is a plain,

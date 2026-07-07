@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Daijob collector — self-contained, read-only.
+"""job-searcher :: Daijob collector — self-contained, read-only.
 
 Collects recent public postings from Daijob's (daijob.com) English job search —
 bilingual jobs in Japan — and prints a normalized JSON array (see

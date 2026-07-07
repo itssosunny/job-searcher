@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: SAP Jobs collector — self-contained, read-only.
+"""job-searcher :: SAP Jobs collector — self-contained, read-only.
 
 Collects public postings from SAP's SuccessFactors careers board for the Seoul
 listing and prints a normalized JSON array (see docs/SCHEMA.md). The Seoul

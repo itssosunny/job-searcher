@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: RocketPunch collector — self-contained, read-only (best-effort).
+"""job-searcher :: RocketPunch collector — self-contained, read-only (best-effort).
 
 Tries to collect public postings from RocketPunch's (rocketpunch.com) /jobs
 listing and print a normalized JSON array (see docs/SCHEMA.md). Plain GET only —

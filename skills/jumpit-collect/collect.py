@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Jumpit collector — self-contained, read-only.
+"""job-searcher :: Jumpit collector — self-contained, read-only.
 
 Collects recent public postings from Jumpit's (점핏) public positions API and
 prints a normalized JSON array (see docs/SCHEMA.md). The API is the site's own

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: NAVER Careers collector — self-contained, read-only.
+"""job-searcher :: NAVER Careers collector — self-contained, read-only.
 
 Collects current public postings from NAVER Careers (recruit.navercorp.com) and
 prints a normalized JSON array (see docs/SCHEMA.md). The public listing page

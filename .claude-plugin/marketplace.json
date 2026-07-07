@@ -1,11 +1,11 @@
 {
-  "name": "job-seeker",
-  "owner": { "name": "matt" },
+  "name": "job-searcher",
+  "owner": { "name": "itssosunny" },
   "plugins": [
     {
-      "name": "job-seeker",
+      "name": "job-searcher",
       "source": "./",
-      "description": "One self-contained skill per job platform. Each skill collects recent public postings from its source (read-only, no login/apply) and prints normalized JSON."
+      "description": "잡써쳐 — 하나의 스킬 = 하나의 채용 플랫폼. 공개 공고만 수집(읽기 전용, 로그인·지원 없음)하고 정규화 JSON을 출력합니다."
     }
   ]
 }

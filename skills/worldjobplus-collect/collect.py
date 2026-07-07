@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: WorldJobPlus collector — self-contained, read-only.
+"""job-searcher :: WorldJobPlus collector — self-contained, read-only.
 
 Collects public overseas-job postings from WorldJobPlus (월드잡플러스), the Korea
 HRD (한국산업인력공단) overseas-employment portal, and prints a normalized JSON

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Coupang collector — self-contained, read-only.
+"""job-searcher :: Coupang collector — self-contained, read-only.
 
 Collects current public postings from Coupang's careers board and prints a
 normalized JSON array (see docs/SCHEMA.md). Coupang runs a Greenhouse-backed

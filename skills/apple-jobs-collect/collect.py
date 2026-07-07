@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Apple Jobs collector — self-contained, read-only.
+"""job-searcher :: Apple Jobs collector — self-contained, read-only.
 
 Collects recent public postings from Apple's careers site (jobs.apple.com) and
 prints a normalized JSON array (see docs/SCHEMA.md). Apple's search page is

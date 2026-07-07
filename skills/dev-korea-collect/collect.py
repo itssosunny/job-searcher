@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Dev Korea collector — self-contained, read-only.
+"""job-searcher :: Dev Korea collector — self-contained, read-only.
 
 Collects recent public postings from Dev Korea's (dev-korea.com) jobs listing
 and prints a normalized JSON array (see docs/SCHEMA.md). The listing is

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: We Work Remotely collector — self-contained, read-only.
+"""job-searcher :: We Work Remotely collector — self-contained, read-only.
 
 Collects recent public remote postings from We Work Remotely's public RSS feed
 and prints a normalized JSON array (see docs/SCHEMA.md). RSS is a first-class

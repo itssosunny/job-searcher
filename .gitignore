@@ -6,3 +6,12 @@ venv/
 .DS_Store
 *.egg-info/
 .pytest_cache/
+
+# local agent/session runtime (never publish)
+.ai-bridge-cmux/
+.gjc/
+.codegraph
+
+# internal branding docs (not part of the public repo)
+OSS-BRAND-PLAN.md
+research/

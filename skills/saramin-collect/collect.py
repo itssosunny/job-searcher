@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Saramin collector — self-contained, read-only.
+"""job-searcher :: Saramin collector — self-contained, read-only.
 
 Collects recent public postings from Saramin's (사람인) keyword search and prints
 a normalized JSON array (see docs/SCHEMA.md). No login, no save, no apply — a

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: Rallit collector — self-contained, read-only.
+"""job-searcher :: Rallit collector — self-contained, read-only.
 
 Collects recent public postings from Rallit's (랠릿) public position JSON API and
 prints a normalized JSON array (see docs/SCHEMA.md). The API is the site's own

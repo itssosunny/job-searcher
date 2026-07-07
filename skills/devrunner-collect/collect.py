@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""job-seeker :: DevRunner collector — self-contained, read-only.
+"""job-searcher :: DevRunner collector — self-contained, read-only.
 
 Collects recent public postings from DevRunner (devrunner.dev) and prints a
 normalized JSON array (see docs/SCHEMA.md). The /jobs listing is a JS app, but
