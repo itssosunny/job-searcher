@@ -1,7 +1,7 @@
 {
   "name": "job-searcher",
   "version": "0.1.0",
-  "description": "잡써쳐 — 24개 채용 플랫폼의 공개 공고를 수집해 하나의 정규화 JSON으로. 읽기 전용: 로그인·저장·지원 없음. Collect public job postings from 24 job platforms into one normalized JSON. Read-only: no login, no save, no apply.",
+  "description": "잡써쳐 — 23개 채용 플랫폼의 공개 공고를 수집해 하나의 정규화 JSON으로. 읽기 전용: 로그인·저장·지원 없음. Collect public job postings from 23 job platforms into one normalized JSON. Read-only: no login, no save, no apply.",
   "author": { "name": "itssosunny" },
   "license": "MIT",
   "keywords": ["jobs", "job-search", "recruiting", "korea", "remote", "채용", "구직", "잡써쳐"]
