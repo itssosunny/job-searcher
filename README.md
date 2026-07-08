@@ -26,6 +26,10 @@ Claude Code가 처음이라면 → **[5분 퀵스타트](docs/QUICKSTART.md)**
 /plugin install job-searcher
 ```
 
+**이미 설치했다면 업데이트:** `/plugin update job-searcher@job-searcher`
+(또는 `/plugin` → Installed → Check for updates). 새 버전을 받으면 마감기한·상태 같은
+최신 기능이 반영됩니다. `plugin.json`의 `version`이 올라갈 때 업데이트가 감지됩니다.
+
 설치가 끝나면 자연어로 시키면 됩니다:
 
 - "잡코리아에서 마케터 공고 20개 모아줘"
@@ -107,9 +111,10 @@ python3 skills/jobkorea-collect/collect.py --query "데이터 엔지니어" --li
 
 ## 릴리즈 노트
 
-### v0.0.0 — 첫 태그 릴리즈
+### v0.2.0 — 마감기한·상태 지원
 
-22개 채용 플랫폼 수집기를 하나의 정규화 `JobPosting` JSON으로 묶은 첫 공개 태그입니다.
+22개 채용 플랫폼 수집기를 하나의 정규화 `JobPosting` JSON으로 묶은 공개 릴리즈입니다.
+이번 버전부터 모든 공고에 `deadline_date`와 `status`가 붙습니다.
 
 **이번에 추가된 것 — 공고 마감기한·상태**
 
