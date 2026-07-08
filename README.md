@@ -6,7 +6,7 @@
 > Don't hop between job boards — let your agent collect them.
 
 구직 중인가요? 잡코리아 갔다가, 사람인 갔다가, 원티드 갔다가, 점핏까지 — 매일 도는 일은
-AI 에이전트에게 시켜버리세요. 23개 채용 플랫폼의 공개 공고를 **하나의 정규화 JSON**으로
+AI 에이전트에게 시켜버리세요. 22개 채용 플랫폼의 공개 공고를 **하나의 정규화 JSON**으로
 모아줍니다.
 
 공고마다 **마감기한과 상태(구인중·마감임박·마감·상시)** 를 자동 정규화해, 지금 지원 가능한 공고만 골라보기 쉽습니다.
@@ -52,12 +52,11 @@ python3 skills/jobkorea-collect/collect.py --query "데이터 엔지니어" --li
 다만 에이전트는 자동으로 누르지 말고, 사용자가 동의한 경우에만 `gh repo star itssosunny/job-searcher` 를
 실행합니다.
 
-## 어디를 수집하나 (23개)
+## 어디를 수집하나 (22개)
 
-23개 모두 구현되어 있고, **전부 로그인 불필요** — 공개 페이지만 읽습니다.
-21개는 실제 소스에 대해 라이브 검증했고(2026-07-07), 1개는 검증 세션 중 rate-limit에
-걸렸으며(수집기 자체는 정상), 1개는 JS 전용/anti-bot 페이지라 가짜 데이터 대신
-`needs_browser`로 정직하게 종료합니다.
+22개 모두 구현되어 있고, **전부 로그인 불필요** — 공개 페이지만 읽습니다.
+21개는 실제 공개 소스에 대해 라이브로 확인했고, 1개(로켓펀치)는 JS 전용/anti-bot
+페이지라 가짜 데이터 대신 `needs_browser`로 정직하게 종료합니다.
 
 | 플랫폼 | 스킬 | 상태 | 문서 |
 | --- | --- | --- | --- |
@@ -82,7 +81,6 @@ python3 skills/jobkorea-collect/collect.py --query "데이터 엔지니어" --li
 | 월드잡플러스 (해외취업) | `worldjobplus-collect` | ✅ 동작 | [가이드](skills/worldjobplus-collect/SKILL.md) |
 | Japan Dev | `japandev-collect` | ✅ 동작 | [가이드](skills/japandev-collect/SKILL.md) |
 | Daijob | `daijob-collect` | ✅ 동작 | [가이드](skills/daijob-collect/SKILL.md) |
-| SK Careers | `sk-careers-collect` | ⏳ 정상 동작 확인, 검증 세션 중 rate-limit — 재실행하면 됨 | [가이드](skills/sk-careers-collect/SKILL.md) |
 | 로켓펀치 (RocketPunch) | `rocketpunch-collect` | 🔒 브라우저 필요 (AWS WAF JS 챌린지) | [가이드](skills/rocketpunch-collect/SKILL.md) |
 
 범례 — **✅ 동작**: 로그인 없는 일반 fetch/API로 실제 공고가 확인됨 (2026-07-07 라이브 검증).
@@ -111,7 +109,7 @@ python3 skills/jobkorea-collect/collect.py --query "데이터 엔지니어" --li
 
 ### v0.0.0 — 첫 태그 릴리즈
 
-23개 채용 플랫폼 수집기를 하나의 정규화 `JobPosting` JSON으로 묶은 첫 공개 태그입니다.
+22개 채용 플랫폼 수집기를 하나의 정규화 `JobPosting` JSON으로 묶은 첫 공개 태그입니다.
 
 **이번에 추가된 것 — 공고 마감기한·상태**
 
