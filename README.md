@@ -105,6 +105,23 @@ python3 skills/jobkorea-collect/collect.py --query "데이터 엔지니어" --li
 수집기는 각 사이트의 공개 페이지 구조에 의존합니다. 사이트가 개편되면 일부 수집기가 멈출 수
 있어요. 발견하면 이슈로 알려주세요 — 스킬 하나가 파일 하나라 고치기 쉽습니다.
 
+## 릴리즈 노트
+
+### v0.0.0 — 첫 태그 릴리즈
+
+23개 채용 플랫폼 수집기를 하나의 정규화 `JobPosting` JSON으로 묶은 첫 공개 태그입니다.
+
+**이번에 추가된 것 — 공고 마감기한·상태**
+
+- 모든 공고에 `deadline_date`(정규화된 ISO 마감일)와 `status` 필드가 붙습니다.
+  `status`는 `open` · `closing_soon`(D-3 이내) · `closed` · `rolling`(상시/수시) · `unknown` 중 하나입니다.
+- 상태는 각 공고의 `deadline` + 수집 시각으로만 파생합니다. 원문 `deadline`은 손대지 않고 그대로 둡니다.
+- 범위형 마감(`시작 ~ 마감`)은 **마감일(끝 날짜)** 기준으로 계산하고, `상시`/`수시`는 `rolling`로 둡니다.
+- We Work Remotely는 `expires_at`에서 실제 마감일을 새로 뽑아냅니다.
+- 마감 정보를 노출하지 않는 소스(일부 해외·ATS형)는 정직하게 `unknown`입니다.
+
+필드 정의는 [docs/SCHEMA.md](docs/SCHEMA.md)를 보세요.
+
 ## License
 
 MIT
