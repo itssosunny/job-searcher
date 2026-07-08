@@ -41,9 +41,73 @@ class JobPosting:
     employment_type: str | None
     posted_at: str | None
     deadline: str | None
+    deadline_date: str | None
+    status: str
     salary: str | None
     snippet: str | None
     collected_at: str
+
+
+# --- deadline -> (deadline_date, status) : job-searcher shared rule (F1 inline) ---
+# Copy verbatim into each collect.py; keep byte-identical across skills.
+import re as _re
+from datetime import date as _date, datetime as _dt, timedelta as _td
+
+_JS_ISO = _re.compile(r"(20\d{2})[-./](\d{1,2})[-./](\d{1,2})")
+_JS_RFC = _re.compile(r"(\d{1,2})\s+([A-Za-z]{3})\s+(20\d{2})")
+_JS_MD  = _re.compile(r"~?\s*(\d{1,2})[./](\d{1,2})")
+_JS_DN  = _re.compile(r"D-\s*(\d+)", _re.I)
+_JS_ROLL= _re.compile(r"상시|수시|채용시|공고시|open\s*until\s*filled|always", _re.I)
+_JS_TDY = _re.compile(r"오늘\s*마감|today", _re.I)
+_JS_TMR = _re.compile(r"내일\s*마감", _re.I)
+
+
+def _derive_status(deadline_raw, collected_at):
+    """(deadline_date_iso|None, status). Pure; collected_at ISO string is 'today'.
+    For a `start ~ end` range the LAST concrete date (the close) is used; a rolling
+    marker to the right of the last date (or with no date) means open-ended."""
+    try:
+        today = _dt.fromisoformat(str(collected_at).replace("Z", "+00:00")).date()
+    except Exception:
+        today = _date.today()
+    if not deadline_raw:
+        return None, "unknown"
+    s = str(deadline_raw).strip()
+    dl = None; pos = -1
+    for m in _JS_ISO.finditer(s):
+        try:
+            d = _date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+            if m.end() > pos: dl, pos = d, m.end()
+        except ValueError: pass
+    if dl is None:
+        m = _JS_RFC.search(s)
+        if m:
+            try: dl, pos = _dt.strptime(f"{m.group(1)} {m.group(2)} {m.group(3)}", "%d %b %Y").date(), m.end()
+            except ValueError: pass
+    if dl is None:
+        m = _JS_DN.search(s)
+        if m: dl, pos = today + _td(days=int(m.group(1))), m.end()
+    if dl is None:
+        m = _JS_TMR.search(s)
+        if m: dl, pos = today + _td(days=1), m.end()
+    if dl is None:
+        m = _JS_TDY.search(s)
+        if m: dl, pos = today, m.end()
+    if dl is None:
+        for m in _JS_MD.finditer(s):
+            try:
+                cand = _date(today.year, int(m.group(1)), int(m.group(2)))
+                if cand < today - _td(days=1): cand = _date(today.year + 1, int(m.group(1)), int(m.group(2)))
+                if m.end() > pos: dl, pos = cand, m.end()
+            except ValueError: pass
+    roll = _JS_ROLL.search(s)
+    if roll and (dl is None or roll.start() > pos):
+        return None, "rolling"
+    if dl is None:
+        return None, "unknown"
+    days = (dl - today).days
+    status = "closed" if days < 0 else ("closing_soon" if days <= 3 else "open")
+    return dl.isoformat(), status
 
 
 def _fetch(url: str, timeout: int) -> str:
@@ -89,6 +153,7 @@ def collect(query: str | None, limit: int, timeout: int = 30) -> list[JobPosting
         # company: the header link that is not the title (also a /detail/ anchor)
         comp = card.select_one(".job-card__header-info a[href*='/en/jobs/detail/']")
         desc = _dd_for(card, "Job Description")
+        _dd, _st = _derive_status(None, now)
         out.append(
             JobPosting(
                 source=SOURCE,
@@ -100,6 +165,8 @@ def collect(query: str | None, limit: int, timeout: int = 30) -> list[JobPosting
                 employment_type=None,
                 posted_at=None,
                 deadline=None,
+                deadline_date=_dd,
+                status=_st,
                 salary=_dd_for(card, "Salary"),
                 snippet=desc[:200] if desc else None,
                 collected_at=now,
